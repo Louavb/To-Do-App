@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VRCafe ToDo App</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container">
+    <aside>
+      <div class="logo">
+        <img src="images/logo.webp" alt="VRCafe Logo" class="logo-img" />
+      </div>
+      <nav>
+        <ul id="category-list"></ul>
+      </nav>
+      <form id="new-category-form">
+        <input type="text" id="new-category-input" placeholder="Nieuwe categorie..." />
+        <button type="submit">+</button>
+      </form>
+
+      <div id="history-popup" class="day-popup hidden">
+        <div class="popup-content">
+          <button id="close-history-popup">x</button>
+          <h3>Voltooide taken</h3>
+          <div id="completed-history-list"></div>
+        </div>
+      </div>
+
+    </aside>
+
+    <main>
+      <header>
+        <div class="header-top">
+          <h1>ToDo App</h1>
+          <button id="theme-toggle">🌓 Thema</button>
+        </div>
+
+        <select id="mobile-category" class="mobile-category-select"></select>
+
+        <form id="task-form">
+          <input type="text" id="task-input" placeholder="Nieuwe taak toevoegen..." required />
+          <input type="date" id="task-date" required />
+          <button id="toggle-completed-history" type="button">📜 Voltooide taken</button>
+
+          <div class="repeat-options">
+            <label><input type="radio" name="repeat-type" value="weekly" /><span>Doordeweeks</span></label>
+            <label><input type="radio" name="repeat-type" value="monthly" /><span>Maandelijks</span></label>
+            <label><input type="radio" name="repeat-type" value="" checked /><span>Eenmalig</span></label>
+            <div class="repeat-number">
+              <input type="number" id="repeat-every" min="1" value="1" />
+              <span>x</span>
+            </div>
+          </div>
+
+          <button type="submit-toevoegen">Toevoegen</button>
+        </form>
+
+        <div class="filters">
+          <select id="status-filter">
+            <option value="all">Alle taken</option>
+            <option value="active">Niet voltooid</option>
+            <option value="completed">Voltooid</option>
+          </select>
+        </div>
+      </header>
+
+      <section id="progress-container">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </section>
+
+      <section id="task-list"></section>
+
+      <div id="upcoming-popup" class="day-popup hidden">
+        <div class="popup-content">
+          <button id="close-upcoming-popup" class="popup-close-btn">×</button>
+          <h3 class="popup-title">Komende taken deze maand</h3>
+          <ul id="upcoming-tasks-list"></ul>
+        </div>
+      </div>
+
+      <div class="calendar-top-row">
+        <button id="toggle-upcoming" class="toggle-upcoming-btn">
+          📅 Komende taken (<span id="upcoming-count">0</span>)
+        </button>
+      </div>
+
+      <section id="calendar-view">
+        <h2>Agenda</h2>
+        <div class="calendar-header">
+          <button id="prev-month" class="arrow-left">⮕</button>
+          <span id="calendar-month">Maand</span>
+          <button id="next-month">⮕</button>
+        </div>
+        <div id="day-names" class="calendar-days grid grid-cols-7 text-center text-sm font-medium"></div>
+        <div id="calendar-container"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="day-popup" class="day-popup hidden">
+    <div class="popup-content">
+      <button id="close-popup">x</button>
+      <h3 id="popup-date">Datum</h3>
+      <ul id="popup-tasks"></ul>
+
+      <form id="popup-task-form">
+        <select id="popup-task-category"></select>
+        <input type="text" id="popup-task-input" placeholder="Taak toevoegen..." required />
+        <button type="submit">➕</button>
+      </form>
+
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
