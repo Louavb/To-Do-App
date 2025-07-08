@@ -179,7 +179,7 @@ function toggleComplete(id, specificDate = null) {
 // Functie om de categorieën op te halen uit localStorage of standaardwaarden
 function getCategories() {
   const stored = JSON.parse(localStorage.getItem('categories')) || ["Werk", "Persoonlijk"];
-  return ["Alles", ...stored];
+  return ["Alles", ...stored.filter(cat => cat !== "Alles")];
 }
 
 // Functie om de categorieën weer te geven in de UI
@@ -237,7 +237,7 @@ function renderCategories() {
 function deleteCategory(name) {
   if (["Werk", "Persoonlijk"].includes(name)) return;
   if (confirm(`Weet je zeker dat je de categorie "${name}" wilt verwijderen? Alle bijbehorende taken worden ook verwijderd.`)) {
-    let cats = getCategories().filter(c => c !== name);
+    let cats = JSON.parse(localStorage.getItem('categories') || '[]').filter(c => c !== name && c !== "Alles");
     localStorage.setItem('categories', JSON.stringify(cats));
     let tasks = getTasks().filter(t => t.category !== name);
     saveTasks(tasks);
