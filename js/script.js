@@ -1,5 +1,5 @@
-// Actieve categorie die nu geselecteerd is (standaard: 'Werk')
-let currentCategory = 'Werk';
+// Actieve categorie die nu geselecteerd is (standaard: 'Alles')
+let currentCategory = 'Alles';
 
 // Alle belangrijke HTML-elementen ophalen waar we straks iets mee doen
 const taskForm = document.getElementById('task-form');
